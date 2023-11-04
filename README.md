@@ -54,3 +54,36 @@ dependencies:
   date_format: ^2.0.7
   intl: ^0.18.1
 ```
+
+### Hice Local Storage
+Use of hive local storage, and configuration to enhance hive-objects storage.
+Code is as given below.
+```
+import 'package:hive/hive.dart';
+
+part 'notepaddata.g.dart';
+
+@HiveType(typeId: 0)
+class NotePadData extends HiveObject{
+  @HiveField(0)
+  String? title;
+
+  @HiveField(1)
+  String? note;
+
+  @HiveField(2)
+  DateTime createdAt = DateTime.now();
+}
+```
+
+and a model to fetch objects from the box.
+
+```
+import 'package:hive/hive.dart';
+import 'package:try_hive/Model/notepaddata.dart';
+
+class Boxes{
+  static Box<NotePadData> getNotePadData() =>
+    Hive.box<NotePadData>("note_pad_data");
+}
+```
