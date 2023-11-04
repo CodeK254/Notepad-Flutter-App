@@ -31,7 +31,7 @@ ___
 </div>
 
 ### Dependencies
-___
+***
 Here are the dependencies used in the development and success of the v1.0.0 of this application.
 ```
 dependencies:
