@@ -18,15 +18,15 @@ A Notepad Android application with todo-list additional function. Simple to use 
 ## Todolist
 <div id="notepad">
 <span>
-<img src="assets/app/todolist.png" height="700" width="360">
-<img src="assets/app/add_todo.png" height="700" width="360">
+<img src="assets/app/todolist.png" height="650" width="380">
+<img src="assets/app/add_todo.png" height="650" width="380">
 </span>
 </div>
 <hr/>
 <div id="notepad2">
 <span>
-<img src="assets/app/search_in_todo.png" height="700" width="360">
-<img src="assets/app/search.png" height="700" width="360">
+<img src="assets/app/search_in_todo.png" height="650" width="380">
+<img src="assets/app/search.png" height="650" width="380">
 </span>
 </div>
 
