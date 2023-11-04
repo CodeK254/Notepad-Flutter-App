@@ -39,14 +39,24 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   google_fonts: ^3.0.1
-  fluttertoast: ^6.0.1
-  shared_preferences: ^0.5.5
-  flutter_native_splash: ^2.0.4
-  flutter_launcher_icons: ^0.11.0
+  fluttertoast: ^8.2.2
+  shared_preferences: ^2.2.2
+  flutter_native_splash: 
+  flutter_launcher_icons: 
+  # build_runner: ^2.4.6
+  get: ^4.6.6
+  flutter_animate: ^4.2.0+1
+  date_format: ^2.0.7
+  intl: ^0.18.1
 
 dev_dependencies:
+  flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
+
+  hive_generator: ^2.0.0
+  build_runner: ^2.4.6
+  build_runner_core: ^7.2.9
 
 flutter_native_splash:
   image: "assets/book.png"
@@ -60,9 +70,6 @@ flutter_icons:
   ios: true
   android: true
   Windows: true
-
-  hive_generator: ^2.0.0
-  build_runner: ^2.3.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

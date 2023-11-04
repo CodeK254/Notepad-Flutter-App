@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:try_hive/Screens/constants.dart';
+import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:try_hive/Model/boxes.dart';
+import 'package:try_hive/Model/todolistdata.dart';
+import 'package:try_hive/controllers/todo_controller.dart';
 
-class TodosPage extends StatefulWidget {
-  const TodosPage({super.key});
+import '../widgets/todo_display.dart';
 
-  @override
-  State<TodosPage> createState() => _TodosPageState();
-}
+class TodoDisplayWidget extends StatelessWidget {
+  TodoDisplayWidget({super.key});
 
-class _TodosPageState extends State<TodosPage> {
-  navigate(){
-    Navigator.pushNamed(context, "/add_todo");
-  }
+  final todoController = Get.put(TodoController());
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: myAppBar("Todo List"),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: (){
-          navigate();
-        },
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 30,
-        ),
-      ),
+    return ValueListenableBuilder<Box<TodoListData>>(
+      valueListenable: TodoBoxes.getTodoListData().listenable(), 
+      builder: (context, box, _){
+        final todos = box.values.toList();
+        return AnimatedList(
+          key: todoController.listKey,
+          initialItemCount: todos.length,
+          itemBuilder: (context, index, animation){
+            return TodoListWidget(todos: todos, index: index, todoController: todoController);
+          },
+        );
+      }
     );
   }
 }

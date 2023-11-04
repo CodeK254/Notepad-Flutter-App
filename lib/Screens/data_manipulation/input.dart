@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:try_hive/Model/boxes.dart';
 import 'package:try_hive/Model/notepaddata.dart';
+import 'package:try_hive/controllers/todo_controller.dart';
 
 class NotesInput extends StatefulWidget {
   const NotesInput({super.key});
@@ -12,6 +14,7 @@ class NotesInput extends StatefulWidget {
 class _NotesInputState extends State<NotesInput> {
   final TextEditingController _title = TextEditingController();
   final TextEditingController _message = TextEditingController();
+  final todoController = Get.put(TodoController());
 
   static const IconData check = IconData(0xe156, fontFamily: 'MaterialIcons');
 
@@ -44,7 +47,7 @@ class _NotesInputState extends State<NotesInput> {
             color: Colors.greenAccent,
           ),
         ),
-        title: Text(
+        title: const Text(
           "note",
           style: TextStyle(
             fontFamily: "Rancho",
@@ -78,9 +81,9 @@ class _NotesInputState extends State<NotesInput> {
         ),
         children: [
           Text(
-            DateTime.now().toString().substring(0, 19),
+            todoController.dateFormat(DateTime.now()),
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 16,
               color: Colors.grey[700],
               letterSpacing: 1.2,
             ),
@@ -96,7 +99,7 @@ class _NotesInputState extends State<NotesInput> {
               color: Colors.black,
               fontWeight: FontWeight.bold
             ),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Title",
               hintStyle: TextStyle(
                 fontFamily: "Rancho",
@@ -119,7 +122,7 @@ class _NotesInputState extends State<NotesInput> {
               fontSize: 15,
               color: Colors.black87,
             ),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Note something down",
               hintStyle: TextStyle(
                 fontFamily: "Rancho",

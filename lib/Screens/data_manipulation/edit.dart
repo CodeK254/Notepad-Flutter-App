@@ -1,48 +1,22 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:try_hive/Model/boxes.dart';
+import 'package:get/get.dart';
 import 'package:try_hive/Model/notepaddata.dart';
+import 'package:try_hive/controllers/todo_controller.dart';
 
-class NotesEdit extends StatefulWidget {
+class NotesEdit extends StatelessWidget {
   NotePadData npd;
+
+  final noteController = Get.put(TodoController());
+  final TextEditingController title = TextEditingController();
+  final TextEditingController message = TextEditingController();
 
   NotesEdit({required this.npd});
 
   @override
-  State<NotesEdit> createState() => _NotesEditState();
-}
-
-class _NotesEditState extends State<NotesEdit> {
-  final TextEditingController _title = TextEditingController();
-  final TextEditingController _message = TextEditingController();
-
-  void takeData(){
-    _title.text = widget.npd.title.toString();
-    _message.text = widget.npd.note.toString();
-    print(widget.npd.key);
-  }
-
-  static const IconData check = IconData(0xe156, fontFamily: 'MaterialIcons');
-
-  void editNote(String title, String note){
-    final editnote = NotePadData()
-      ..title = title
-      ..note = note
-      ..createdAt = DateTime.now();
-
-    final _mybox = Boxes.getNotePadData();
-
-    _mybox.put(widget.npd.key, editnote);
-  }
-  
-  @override
-  void initState(){
-    super.initState();
-    takeData();
-  }
-  @override
   Widget build(BuildContext context) {
+    noteController.takeData(npd, title, message);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -59,7 +33,7 @@ class _NotesEditState extends State<NotesEdit> {
             color: Colors.greenAccent,
           ),
         ),
-        title: Text(
+        title: const Text(
           "note",
           style: TextStyle(
             fontFamily: "Rancho",
@@ -74,11 +48,11 @@ class _NotesEditState extends State<NotesEdit> {
             padding: const EdgeInsets.all(12),
             child: GestureDetector(
               onTap: (){
-                editNote(_title.text, _message.text);
+                noteController.editNote(npd, title.text, message.text);
                 Navigator.pop(context);
               },
               child: const Icon(
-                check,
+                TodoController.check,
                 color: Colors.green,
                 size: 28,
               ),
@@ -93,7 +67,7 @@ class _NotesEditState extends State<NotesEdit> {
         ),
         children: [
           Text(
-            DateTime.now().toString().substring(0, 19),
+            noteController.dateFormat(DateTime.now()),
             style: TextStyle(
               fontSize: 15,
               color: Colors.grey[700],
@@ -102,7 +76,7 @@ class _NotesEditState extends State<NotesEdit> {
           ),
           const SizedBox(height: 20),
           TextFormField(
-            controller: _title,
+            controller: title,
             cursorColor: Colors.greenAccent,
             cursorHeight: 30,
             keyboardType: TextInputType.text,
@@ -111,7 +85,7 @@ class _NotesEditState extends State<NotesEdit> {
               color: Colors.black,
               fontWeight: FontWeight.bold
             ),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Title",
               hintStyle: TextStyle(
                 fontFamily: "Rancho",
@@ -125,7 +99,7 @@ class _NotesEditState extends State<NotesEdit> {
           ),
           const SizedBox(height: 20),
           TextFormField(
-            controller: _message,
+            controller: message,
             cursorColor: Colors.teal,
             cursorHeight: 20,
             maxLines: 8,
@@ -134,7 +108,7 @@ class _NotesEditState extends State<NotesEdit> {
               fontSize: 15,
               color: Colors.black87,
             ),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Note something down",
               hintStyle: TextStyle(
                 fontFamily: "Rancho",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 //------------- Register and Login Screen ------------------
@@ -73,18 +74,33 @@ List<Map> drawerItems = [
 
 AppBar myAppBar(String title){
   return AppBar(
-    toolbarHeight: 65,
+    toolbarHeight: 70,
     backgroundColor: Colors.white,
     elevation: 0,
     iconTheme: IconThemeData(
       color: Colors.brown[900],
       size: 25,
     ),
+    actions: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: GestureDetector(
+          onTap: (){
+            Get.toNamed("/search");
+          },
+          child: const Icon(
+            Icons.search,
+            color: Colors.black,
+            size: 25,
+          ),
+        ),
+      )
+    ],
     title: Align(
       alignment: Alignment.bottomLeft,
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: "Rancho",
           fontSize: 30,
           letterSpacing: 1.2,
