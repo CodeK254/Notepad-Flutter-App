@@ -11,7 +11,7 @@ A Notepad Android application with todo-list additional function. Simple to use 
 <hr/>
 <span>
 <img src="assets/app/edit_note.jpg" height="700" width="360">
-<img src="assets/app/search_in_notepad.jpg" height="700" width="360">
+<img src="assets/app/search_in_notepad.jpg" height="700" width="360"> 
 </span>
 </div>
 
