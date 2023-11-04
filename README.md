@@ -31,7 +31,7 @@ A Notepad Android application with todo-list additional function. Simple to use 
 </div>
 
 ### Dependencies
-<p>Here are the dependencies used in the development and success of the v1.0.0 of this application.</p>
+Here are the dependencies used in the development and success of the v1.0.0 of this application.
 ```
 dependencies:
   flutter:
