@@ -5,28 +5,28 @@ A Notepad Android application with todo-list additional function. Simple to use 
 ## Notepad
 <div id="notepad">
 <span>
-<img src="assets/app/notepad.jpg" height="700" width="360">
-<img src="assets/app/edit_note.jpg" height="700" width="360">
+<img src="assets/app/notepad.png" height="700" width="360">
+<img src="assets/app/edit_note.png" height="700" width="360">
 </span>
 <hr/>
 <span>
-<img src="assets/app/edit_note.jpg" height="700" width="360">
-<img src="assets/app/search_in_notepad.jpg" height="700" width="360"> 
+<img src="assets/app/edit_note.png" height="700" width="360">
+<img src="assets/app/search_in_notepad.png" height="700" width="360"> 
 </span>
 </div>
 
 ## Todolist
 <div id="notepad">
 <span>
-<img src="assets/app/todolist.jpg" height="700" width="360">
-<img src="assets/app/add_todo.jpg" height="700" width="360">
+<img src="assets/app/todolist.png" height="700" width="360">
+<img src="assets/app/add_todo.png" height="700" width="360">
 </span>
 </div>
 <hr/>
 <div id="notepad2">
 <span>
-<img src="assets/app/search_in_todo.jpg" height="700" width="360">
-<img src="assets/app/search.jpg" height="700" width="360">
+<img src="assets/app/search_in_todo.png" height="700" width="360">
+<img src="assets/app/search.png" height="700" width="360">
 </span>
 </div>
 
