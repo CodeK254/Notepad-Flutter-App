@@ -4,4 +4,4 @@ A Notepad Android application with todo-list additional function. Simple to use 
 
 ## Notepad
 
-<img src="assets/app/notepad.jpg">
+<img src="assets/app/notepad.jpg" height="700" width="360">
