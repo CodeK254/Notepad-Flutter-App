@@ -5,13 +5,13 @@ A Notepad Android application with todo-list additional function. Simple to use 
 ## Notepad
 <div id="notepad">
 <span>
-<img src="assets/app/notepad.png" height="700" width="360">
-<img src="assets/app/edit_note.png" height="700" width="360">
+<img src="assets/app/notepad.png" height="500" width="360">
+<img src="assets/app/edit_note.png" height="500" width="360">
 </span>
 <hr/>
 <span>
-<img src="assets/app/edit_note.png" height="700" width="360">
-<img src="assets/app/search_in_notepad.png" height="700" width="360"> 
+<img src="assets/app/edit_note.png" height="500" width="360">
+<img src="assets/app/search_in_notepad.png" height="500" width="360"> 
 </span>
 </div>
 
