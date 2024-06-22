@@ -16,8 +16,8 @@ import 'package:try_hive/services/fingerprint.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
 void main() async {
-  await AuthService.requestAuthentication();
   WidgetsFlutterBinding.ensureInitialized();
+  await AuthService.requestAuthentication();
   ThemeController themeController = Get.put(ThemeController());
   await Hive.initFlutter();
   Hive.registerAdapter(NotePadDataAdapter());
