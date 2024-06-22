@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:try_hive/Model/notepaddata.dart';
@@ -11,9 +12,11 @@ import 'package:try_hive/Screens/profile.dart';
 import 'package:try_hive/Screens/settings.dart';
 import 'package:try_hive/Screens/widgets/bottom_nav.dart';
 import 'package:try_hive/controllers/theme_controller.dart';
+import 'package:try_hive/services/fingerprint.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
 void main() async {
+  await AuthService.requestAuthentication();
   WidgetsFlutterBinding.ensureInitialized();
   ThemeController themeController = Get.put(ThemeController());
   await Hive.initFlutter();
@@ -21,9 +24,15 @@ void main() async {
   Hive.registerAdapter(TodoListDataAdapter());
   await Hive.openBox<NotePadData>("note_pad_data");
   await Hive.openBox<TodoListData>("todo_list_data");
-  final value = CustomColors().stream.map((event) => "Number is: $event");
-
+  final value = CustomColors().stream;
   value.listen((event) {});
+
+  SystemChrome.setPreferredOrientations(
+   [
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+   ]
+  );
 
   runApp(
     Obx(

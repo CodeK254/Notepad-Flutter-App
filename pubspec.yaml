@@ -48,6 +48,7 @@ dependencies:
   flutter_animate: ^4.2.0+1
   date_format: ^2.0.7
   intl: ^0.18.1
+  local_auth: ^2.2.0
 
 dev_dependencies:
   flutter_lints: ^3.0.0
