@@ -17,48 +17,50 @@ class HomeScreen extends StatelessWidget {
     return Obx(
       () => Scaffold(
         backgroundColor: Colors.grey.shade100,
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              const DrawerHeader(
-                child: CircleAvatar(
-                  radius: 50,
-                  backgroundColor: Colors.black,
+        drawer: SafeArea(
+          child: Drawer(
+            child: ListView(
+              children: [
+                const DrawerHeader(
                   child: CircleAvatar(
-                    radius: 48,
-                    backgroundImage: AssetImage("assets/launcher.png"),
+                    radius: 50,
+                    backgroundColor: Colors.black,
+                    child: CircleAvatar(
+                      radius: 48,
+                      backgroundImage: AssetImage("assets/launcher.png"),
+                    ),
                   ),
                 ),
-              ),
-              ...List.generate(
-                drawerItems.length,
-                (index) => Column(
-                  children: [
-                    ListTile(
-                      onTap: (){
-                        Navigator.pushNamed(context, drawerItems[index]["url"]);
-                      },
-                      tileColor: Colors.white,
-                      title: Text(
-                        drawerItems[index]["label"],
-                        style: TextStyle(
-                          fontFamily: "Rancho",
-                          fontSize: 20,
-                          color: Colors.grey[700],
-                          letterSpacing: 1.2,
+                ...List.generate(
+                  drawerItems.length,
+                  (index) => Column(
+                    children: [
+                      ListTile(
+                        onTap: (){
+                          Navigator.pushNamed(context, drawerItems[index]["url"]);
+                        },
+                        tileColor: Colors.white,
+                        title: Text(
+                          drawerItems[index]["label"],
+                          style: TextStyle(
+                            fontFamily: "Rancho",
+                            fontSize: 20,
+                            color: Colors.grey[700],
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.grey[900],
+                          size: 13,
                         ),
                       ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.grey[900],
-                        size: 13,
-                      ),
-                    ),
-                    const Divider(),
-                  ],
+                      const Divider(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         appBar: bottomNavController.toDisplay.value == 0 ? AppBar(
@@ -116,17 +118,22 @@ class HomeScreen extends StatelessWidget {
         ) : myAppBar("Todo List"),
         body: bottomNavController.toDisplay.value == 0 ? NotesDisplayWidget(todoController: todoController) : TodoDisplayWidget(),
         bottomNavigationBar: BottomNavigationBarTheme(
-          data: const BottomNavigationBarThemeData(
+          data: BottomNavigationBarThemeData(
             selectedItemColor: Colors.black,
             type: BottomNavigationBarType.fixed,
             unselectedItemColor: Colors.grey,
-            selectedIconTheme: IconThemeData(
+            selectedIconTheme: const IconThemeData(
               size: 28,
               color: Colors.black,
             ),
-            unselectedIconTheme: IconThemeData(
+            unselectedIconTheme: const IconThemeData(
               size: 25,
               color: Colors.grey,
+            ),
+            selectedLabelStyle: TextStyle(
+              fontFamily: "Rancho",
+              fontSize: 18,
+              color: Colors.grey.shade400,
             ),
           ), 
           child: BottomNavigationBar(

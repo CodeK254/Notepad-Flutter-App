@@ -57,7 +57,8 @@ class TodoListWidget extends StatelessWidget {
                       child: Text(
                         todoController.dateFormat(todos[index].createdAt),
                         style: TextStyle(
-                          fontSize: 12,
+                          fontFamily: "Rancho",
+                          fontSize: 14,
                           color: Colors.grey.shade500,
                         ),
                       ),
@@ -70,7 +71,8 @@ class TodoListWidget extends StatelessWidget {
                         child: Text(
                           todos[index].todo.toString(),
                           style: TextStyle(
-                            fontSize: 16,
+                            fontFamily: "Rancho",
+                            fontSize: 18,
                             color: Colors.grey.shade800,
                           ),
                           // overflow: TextOverflow.ellipsis,

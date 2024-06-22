@@ -70,15 +70,18 @@ class NotesDisplayWidget extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            notedata[index].title != "" ? Text(
-                              notedata[index].note.toString(),
-                              style: TextStyle(
-                                fontFamily: "Rancho",
-                                fontSize: 18,
-                                letterSpacing: 1.2,
-                                color: Colors.grey[800],
+                            Visibility(
+                              visible: notedata[index].title != "",
+                              child: Text(
+                                notedata[index].note.toString().split("\n").first,
+                                style: TextStyle(
+                                  fontFamily: "Rancho",
+                                  fontSize: 18,
+                                  letterSpacing: 1.2,
+                                  color: Colors.grey[800],
+                                ),
                               ),
-                            ) : Container(),
+                            ),
                             const SizedBox(height: 7),
                             Align(
                               alignment: Alignment.bottomRight,

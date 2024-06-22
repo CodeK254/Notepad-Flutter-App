@@ -13,14 +13,11 @@ import 'package:try_hive/Screens/widgets/bottom_nav.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Hive.initFlutter();
-
   Hive.registerAdapter(NotePadDataAdapter());
   Hive.registerAdapter(TodoListDataAdapter());
   await Hive.openBox<NotePadData>("note_pad_data");
   await Hive.openBox<TodoListData>("todo_list_data");
-
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
