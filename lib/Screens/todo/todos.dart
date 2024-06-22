@@ -18,10 +18,10 @@ class TodoDisplayWidget extends StatelessWidget {
       valueListenable: TodoBoxes.getTodoListData().listenable(), 
       builder: (context, box, _){
         final todos = box.values.toList();
-        return AnimatedList(
+        return ListView.builder(
           key: todoController.listKey,
-          initialItemCount: todos.length,
-          itemBuilder: (context, index, animation){
+          itemCount: todos.length,
+          itemBuilder: (context, index){
             return TodoListWidget(todos: todos, index: index, todoController: todoController);
           },
         );

@@ -67,9 +67,9 @@ class TodoController extends GetxController with GetTickerProviderStateMixin{
     );
   }
 
-  void addItem(int index){
-    listKey.currentState!.insertItem(index);
-  }
+  // void addItem(int index){
+  //   listKey.currentState!.insertItem(index);
+  // }
 
   void takeData(NotePadData npd, TextEditingController title, TextEditingController message){
     title.text = npd.title.toString();

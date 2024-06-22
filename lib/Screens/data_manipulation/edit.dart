@@ -12,7 +12,7 @@ class NotesEdit extends StatelessWidget {
   final TextEditingController title = TextEditingController();
   final TextEditingController message = TextEditingController();
 
-  NotesEdit({required this.npd});
+  NotesEdit({super.key, required this.npd});
 
   @override
   Widget build(BuildContext context) {
@@ -98,25 +98,32 @@ class NotesEdit extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          TextFormField(
-            controller: message,
-            cursorColor: Colors.teal,
-            cursorHeight: 20,
-            maxLines: 8,
-            keyboardType: TextInputType.multiline,
-            style: const TextStyle(
-              fontSize: 15,
-              color: Colors.black87,
-            ),
-            decoration: const InputDecoration(
-              hintText: "Note something down",
-              hintStyle: TextStyle(
-                fontFamily: "Rancho",
-                fontSize: 18,
-                color: Colors.black38,
-                letterSpacing: 2,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .75,
+            width: MediaQuery.of(context).size.width,
+            child: TextFormField(
+              controller: message,
+              cursorColor: Colors.teal,
+              cursorHeight: 20,
+              scribbleEnabled: !true,
+              scrollPhysics: const ClampingScrollPhysics(),
+              maxLength: 1000,
+              maxLines: 90,
+              keyboardType: TextInputType.multiline,
+              style: const TextStyle(
+                fontSize: 15,
+                color: Colors.black87,
               ),
-              border: InputBorder.none,
+              decoration: const InputDecoration(
+                hintText: "Note something down...",
+                hintStyle: TextStyle(
+                  fontFamily: "Rancho",
+                  fontSize: 18,
+                  color: Colors.black38,
+                  letterSpacing: 2,
+                ),
+                border: InputBorder.none,
+              ),
             ),
           ),
         ],

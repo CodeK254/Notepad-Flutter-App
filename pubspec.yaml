@@ -40,7 +40,7 @@ dependencies:
   hive_flutter: ^1.1.0
   google_fonts: ^3.0.1
   fluttertoast: ^8.2.2
-  shared_preferences: ^2.2.2
+  shared_preferences: ^2.2.3
   flutter_native_splash: 
   flutter_launcher_icons: 
   # build_runner: ^2.4.6

@@ -4,11 +4,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:try_hive/Model/boxes.dart';
 import 'package:try_hive/Model/notepaddata.dart';
 import 'package:try_hive/Screens/data_manipulation/edit.dart';
+import 'package:try_hive/controllers/theme_controller.dart';
 import 'package:try_hive/controllers/todo_controller.dart';
+import 'package:try_hive/services/theme/colors.dart';
 
 class NotesDisplayWidget extends StatelessWidget {
   NotesDisplayWidget({super.key, required this.todoController});
   final controller = Get.put(TodoController());
+  final ThemeController themeController = Get.put(ThemeController());
 
   final TodoController todoController;
 
@@ -40,17 +43,17 @@ class NotesDisplayWidget extends StatelessWidget {
                         maxWidth: MediaQuery.of(context).size.width * 0.85,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
+                        color: CustomColors.lightGrey,
                         borderRadius: BorderRadius.circular(3),
                         boxShadow: [
-                          const BoxShadow(
-                            offset: Offset(-4, -4),
-                            color: Colors.white,
+                          BoxShadow(
+                            offset: const Offset(-4, -4),
+                            color: CustomColors.backgroundColor,
                             blurRadius: 15,
                           ),
                           BoxShadow(
                             offset: const Offset(4, 4),
-                            color: Colors.grey.shade400,
+                            color: CustomColors.grey.withOpacity(.6),
                             blurRadius: 15,
                           ),
                         ]
@@ -62,24 +65,26 @@ class NotesDisplayWidget extends StatelessWidget {
                           children: [
                             Text(
                               notedata[index].title != "" ? notedata[index].title.toString() : notedata[index].note.toString(),
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontFamily: "Rancho",
                                 fontSize: 20,
                                 letterSpacing: 1.2,
-                                fontWeight: FontWeight.bold
+                                fontWeight: FontWeight.bold,
+                                color: CustomColors.textColor,
                               ),
                             ),
                             const SizedBox(height: 10),
                             Visibility(
                               visible: notedata[index].title != "",
                               child: Text(
-                                notedata[index].note.toString().split("\n").first,
+                                notedata[index].note.toString().split("\n").first.trimRight(),
                                 style: TextStyle(
                                   fontFamily: "Rancho",
                                   fontSize: 18,
                                   letterSpacing: 1.2,
-                                  color: Colors.grey[800],
+                                  color: CustomColors.lightTextColor,
                                 ),
+                                overflow: TextOverflow.fade,
                               ),
                             ),
                             const SizedBox(height: 7),
@@ -91,7 +96,7 @@ class NotesDisplayWidget extends StatelessWidget {
                                   fontFamily: "Rancho", 
                                   fontSize: 13,
                                   letterSpacing: 1.2,
-                                  color: Colors.grey[500],
+                                  color: CustomColors.grey.withOpacity(.75),
                                 ),
                               ),
                             ),
