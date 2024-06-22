@@ -4,7 +4,6 @@ import "package:intl/intl.dart";
 import "package:try_hive/Model/boxes.dart";
 import "package:try_hive/Model/notepaddata.dart";
 import "package:try_hive/Model/todolistdata.dart";
-import "../Screens/widgets/todo_display.dart";
 
 class TodoController extends GetxController with GetTickerProviderStateMixin{
   final mybox = TodoBoxes.getTodoListData();
@@ -52,24 +51,10 @@ class TodoController extends GetxController with GetTickerProviderStateMixin{
     return dateFormat;
   }
 
-  void removeItem(List<TodoListData> data, int index){
-    // final removedItem = data[index];
-    Future.delayed(const Duration(seconds: 1), (){
-      data[index].delete();
-    });
-    listKey.currentState!.removeItem(
-      index, 
-      (context, animation) => TodoListWidget(
-        todos: data, 
-        index: index, 
-        todoController: this,
-      ),
-    );
+  void removeItem(List<TodoListData> data, int index) async {
+    await Future.delayed(const Duration(seconds: 2));
+    data[index].delete();
   }
-
-  // void addItem(int index){
-  //   listKey.currentState!.insertItem(index);
-  // }
 
   void takeData(NotePadData npd, TextEditingController title, TextEditingController message){
     title.text = npd.title.toString();

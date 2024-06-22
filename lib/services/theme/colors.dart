@@ -14,6 +14,8 @@ class CustomColors{
       backgroundColor.value = themeController.lightMode.value ? Colors.white : Colors.black;
       grey.value = Colors.grey;
       lightGrey.value = themeController.lightMode.value ? Colors.grey.shade100 : Colors.grey.shade900;
+      upperShadow = themeController.lightMode.value ? Colors.white.obs : Colors.grey.shade700.obs;
+      lowerShadow = themeController.lightMode.value ? Colors.grey.shade300.obs : Colors.black.obs;
     });
   }
   
@@ -22,6 +24,8 @@ class CustomColors{
   static Rx<Color> backgroundColor = themeController.lightMode.value ? Colors.white.obs : Colors.black.obs;
   static Rx<Color> grey = Colors.grey.obs;
   static Rx<Color> lightGrey = themeController.lightMode.value ? Colors.grey.shade100.obs : Colors.grey.shade900.obs;
+  static Rx<Color> upperShadow = themeController.lightMode.value ? Colors.white.obs : Colors.grey.shade700.obs;
+  static Rx<Color> lowerShadow = themeController.lightMode.value ? Colors.grey.shade300.obs : Colors.black.obs;
 
   static void changeFile(bool value){
     _controller.sink.add(value);

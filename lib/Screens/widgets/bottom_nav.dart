@@ -207,8 +207,9 @@ class HomeScreen extends StatelessWidget {
         title: Text(
           "New Todo",
           style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey.shade700,
+            fontSize: 20,
+            fontFamily: "Rancho",
+            color: CustomColors.textColor.value,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -225,23 +226,27 @@ class HomeScreen extends StatelessWidget {
                 controller: todo,
                 keyboardType: TextInputType.text,
                 keyboardAppearance: Brightness.dark,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: CustomColors.lightTextColor.value,
+                ),
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 3),
                   hintText: "Type your todo here...",
                   hintStyle: TextStyle(
-                    color: Colors.grey.shade400,
+                    color: CustomColors.grey.value.withOpacity(.8),
                     fontSize: 14,
                   ),
                   border: UnderlineInputBorder(
                     borderSide: BorderSide(
-                      color: Colors.grey.shade700,
+                      color: CustomColors.lightTextColor.value.withOpacity(.6),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
-                      color: Colors.grey.shade700,
+                      color: CustomColors.lightTextColor.value.withOpacity(.6),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(6),
@@ -266,7 +271,8 @@ class HomeScreen extends StatelessWidget {
                   "Cancel",
                   style: TextStyle(
                     color: Colors.grey.shade200,
-                    fontSize: 15,
+                    fontSize: 18,
+                    fontFamily: "Rancho",
                   ),
                 ),
               ),
@@ -284,7 +290,8 @@ class HomeScreen extends StatelessWidget {
                   "Add",
                   style: TextStyle(
                     color: Colors.grey.shade200,
-                    fontSize: 15,
+                    fontSize: 18,
+                    fontFamily: "Rancho",
                   ),
                 ),
               ),

@@ -23,9 +23,7 @@ void main() async {
   await Hive.openBox<TodoListData>("todo_list_data");
   final value = CustomColors().stream.map((event) => "Number is: $event");
 
-  final subscription = value.listen((event) {
-    print(event);
-  });
+  value.listen((event) {});
 
   runApp(
     Obx(
