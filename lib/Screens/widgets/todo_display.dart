@@ -26,17 +26,17 @@ class TodoListWidget extends StatelessWidget {
             maxWidth: MediaQuery.of(context).size.width * 0.95,
           ),
           decoration: BoxDecoration(
-            color: CustomColors.lightGrey,
+            color: CustomColors.lightGrey.value,
             borderRadius: BorderRadius.circular(3),
             boxShadow: [
               BoxShadow(
                 offset: const Offset(-4, -4),
-                color: CustomColors.backgroundColor,
+                color: CustomColors.backgroundColor.value,
                 blurRadius: 15,
               ),
               BoxShadow(
                 offset: const Offset(4, 4),
-                color: CustomColors.grey.withOpacity(.7),
+                color: CustomColors.grey.value.withOpacity(.7),
                 blurRadius: 15,
               ),
             ]
@@ -58,7 +58,7 @@ class TodoListWidget extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: "Rancho",
                         fontSize: 14,
-                        color: CustomColors.grey.withOpacity(.75),
+                        color: CustomColors.grey.value.withOpacity(.75),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -69,7 +69,7 @@ class TodoListWidget extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: "Rancho",
                           fontSize: 20,
-                          color: CustomColors.lightTextColor,
+                          color: CustomColors.lightTextColor.value,
                         ),
                         // overflow: TextOverflow.ellipsis,
                       ),

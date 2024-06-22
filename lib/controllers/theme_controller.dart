@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:try_hive/services/theme/colors.dart';
 
 class ThemeController extends GetxController{
   RxBool lightMode = true.obs;
@@ -11,6 +12,7 @@ class ThemeController extends GetxController{
     } else {
       lightMode.value = false;
     }
+    CustomColors.changeFile(lightMode.value);
   }
 
   Future<void> setSharedPreferences(bool value) async {
@@ -27,5 +29,6 @@ class ThemeController extends GetxController{
   void toggleTheme() async {
     await initiateSharedPreferences();
     await setSharedPreferences(!lightMode.value);
+    await initiateSharedPreferences();
   }
 }

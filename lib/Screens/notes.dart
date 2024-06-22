@@ -43,17 +43,17 @@ class NotesDisplayWidget extends StatelessWidget {
                         maxWidth: MediaQuery.of(context).size.width * 0.85,
                       ),
                       decoration: BoxDecoration(
-                        color: CustomColors.lightGrey,
+                        color: CustomColors.lightGrey.value,
                         borderRadius: BorderRadius.circular(3),
                         boxShadow: [
                           BoxShadow(
                             offset: const Offset(-4, -4),
-                            color: CustomColors.backgroundColor,
+                            color: CustomColors.backgroundColor.value,
                             blurRadius: 15,
                           ),
                           BoxShadow(
                             offset: const Offset(4, 4),
-                            color: CustomColors.grey.withOpacity(.6),
+                            color: CustomColors.grey.value.withOpacity(.6),
                             blurRadius: 15,
                           ),
                         ]
@@ -70,7 +70,7 @@ class NotesDisplayWidget extends StatelessWidget {
                                 fontSize: 20,
                                 letterSpacing: 1.2,
                                 fontWeight: FontWeight.bold,
-                                color: CustomColors.textColor,
+                                color: CustomColors.textColor.value,
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -82,7 +82,7 @@ class NotesDisplayWidget extends StatelessWidget {
                                   fontFamily: "Rancho",
                                   fontSize: 18,
                                   letterSpacing: 1.2,
-                                  color: CustomColors.lightTextColor,
+                                  color: CustomColors.lightTextColor.value,
                                 ),
                                 overflow: TextOverflow.fade,
                               ),
@@ -96,7 +96,7 @@ class NotesDisplayWidget extends StatelessWidget {
                                   fontFamily: "Rancho", 
                                   fontSize: 13,
                                   letterSpacing: 1.2,
-                                  color: CustomColors.grey.withOpacity(.75),
+                                  color: CustomColors.grey.value.withOpacity(.75),
                                 ),
                               ),
                             ),

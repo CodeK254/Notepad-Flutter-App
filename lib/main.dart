@@ -11,6 +11,7 @@ import 'package:try_hive/Screens/profile.dart';
 import 'package:try_hive/Screens/settings.dart';
 import 'package:try_hive/Screens/widgets/bottom_nav.dart';
 import 'package:try_hive/controllers/theme_controller.dart';
+import 'package:try_hive/services/theme/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,12 @@ void main() async {
   Hive.registerAdapter(TodoListDataAdapter());
   await Hive.openBox<NotePadData>("note_pad_data");
   await Hive.openBox<TodoListData>("todo_list_data");
+  final value = CustomColors().stream.map((event) => "Number is: $event");
+
+  final subscription = value.listen((event) {
+    print(event);
+  });
+
   runApp(
     Obx(
       () => GetMaterialApp(

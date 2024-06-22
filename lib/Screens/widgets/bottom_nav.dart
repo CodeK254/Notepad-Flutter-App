@@ -18,16 +18,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        backgroundColor: Colors.grey.shade100,
+        backgroundColor: CustomColors.lightGrey.value,
         appBar: bottomNavController.toDisplay.value == 0 ? AppBar(
           toolbarHeight: 70,
-          backgroundColor: Colors.white,
+          backgroundColor: CustomColors.backgroundColor.value,
           elevation: 0,
           iconTheme: IconThemeData(
             color: Colors.brown[900],
             size: 25,
           ),
-          title: const Align(
+          title: Align(
             alignment: Alignment.bottomLeft,
             child: Text(
               "NotePad",
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                 fontFamily: "Rancho",
                 fontSize: 32,
                 letterSpacing: 1.2,
-                color: Colors.black,
+                color: CustomColors.textColor.value,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                   () => Icon(
                     themeController.lightMode.value ? Icons.dark_mode : Icons.light_mode,
                     size: 25,
-                    color: Colors.black,
+                    color: CustomColors.textColor.value,
                   ),
                 ),
               ),
@@ -78,17 +78,17 @@ class HomeScreen extends StatelessWidget {
                 onTap: (){
                   Get.toNamed("/search");
                 },
-                child: const Icon(
+                child: Icon(
                   Icons.search,
                   size: 25,
-                  color: Colors.black,
+                  color: CustomColors.textColor.value,
                 ),
               ),
             ),
           ],
         ) : AppBar(
           toolbarHeight: 70,
-          backgroundColor: Colors.white,
+          backgroundColor: CustomColors.backgroundColor.value,
           elevation: 0,
           iconTheme: IconThemeData(
             color: Colors.brown[900],
@@ -99,12 +99,12 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: GestureDetector(
                 onTap: (){
-                  Get.toNamed("/search");
+                  themeController.toggleTheme();
                 },
                 child: Obx(
                   () => Icon(
                     themeController.lightMode.value ? Icons.dark_mode : Icons.light_mode,
-                    color: Colors.black,
+                    color: CustomColors.textColor.value,
                     size: 25,
                   ),
                 ),
@@ -116,9 +116,9 @@ class HomeScreen extends StatelessWidget {
                 onTap: (){
                   Get.toNamed("/search");
                 },
-                child: const Icon(
+                child: Icon(
                   Icons.search,
-                  color: Colors.black,
+                  color: CustomColors.textColor.value,
                   size: 25,
                 ),
               ),
@@ -132,7 +132,7 @@ class HomeScreen extends StatelessWidget {
                 fontFamily: "Rancho",
                 fontSize: 30,
                 letterSpacing: 1.2,
-                color: CustomColors.textColor,
+                color: CustomColors.textColor.value,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -141,21 +141,21 @@ class HomeScreen extends StatelessWidget {
         body: bottomNavController.toDisplay.value == 0 ? NotesDisplayWidget(todoController: todoController) : TodoDisplayWidget(),
         bottomNavigationBar: BottomNavigationBarTheme(
           data: BottomNavigationBarThemeData(
-            selectedItemColor: Colors.black,
+            selectedItemColor: CustomColors.textColor.value,
             type: BottomNavigationBarType.fixed,
-            unselectedItemColor: Colors.grey,
-            selectedIconTheme: const IconThemeData(
+            unselectedItemColor: CustomColors.grey.value,
+            selectedIconTheme: IconThemeData(
               size: 28,
-              color: Colors.black,
+              color: CustomColors.textColor.value,
             ),
-            unselectedIconTheme: const IconThemeData(
+            unselectedIconTheme: IconThemeData(
               size: 25,
-              color: Colors.grey,
+              color: CustomColors.grey.value,
             ),
             selectedLabelStyle: TextStyle(
               fontFamily: "Rancho",
               fontSize: 18,
-              color: Colors.grey.shade400,
+              color: CustomColors.grey.value.withOpacity(.8),
             ),
           ), 
           child: BottomNavigationBar(
@@ -182,7 +182,7 @@ class HomeScreen extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           // mini: true,
-          backgroundColor: Colors.black,
+          backgroundColor: CustomColors.textColor.value,
           onPressed: (){
             if(bottomNavController.toDisplay.value == 0){
               Get.toNamed("/input");
@@ -190,9 +190,9 @@ class HomeScreen extends StatelessWidget {
               showDialogBox(context);
             }
           },
-          child: const Icon(
+          child: Icon(
             Icons.add,
-            color: Colors.white,
+            color: CustomColors.backgroundColor.value,
             size: 30,
           ),
         ),

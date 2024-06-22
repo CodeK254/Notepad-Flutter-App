@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:try_hive/Model/notepaddata.dart';
 import 'package:try_hive/controllers/todo_controller.dart';
+import 'package:try_hive/services/theme/colors.dart';
 
 class NotesEdit extends StatelessWidget {
   NotePadData npd;
@@ -17,116 +18,119 @@ class NotesEdit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     noteController.takeData(npd, title, message);
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 65,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: GestureDetector(
-          onTap: (){
-            Navigator.pop(context);
-          },
-          child: const Icon(
-            Icons.arrow_back_ios,
-            size: 23,
-            color: Colors.greenAccent,
-          ),
-        ),
-        title: const Text(
-          "note",
-          style: TextStyle(
-            fontFamily: "Rancho",
-            fontSize: 32,
-            color: Colors.black,
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: GestureDetector(
-              onTap: (){
-                noteController.editNote(npd, title.text, message.text);
-                Navigator.pop(context);
-              },
-              child: const Icon(
-                TodoController.check,
-                color: Colors.green,
-                size: 28,
-              ),
+    return Obx(
+      () => Scaffold(
+        backgroundColor: CustomColors.lightGrey.value,
+        appBar: AppBar(
+          toolbarHeight: 65,
+          backgroundColor: CustomColors.backgroundColor.value,
+          elevation: 0,
+          leading: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: const Icon(
+              Icons.arrow_back_ios,
+              size: 23,
+              color: Colors.greenAccent,
             ),
           ),
-        ],
-      ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 10,
-        ),
-        children: [
-          Text(
-            noteController.dateFormat(DateTime.now()),
+          title: Text(
+            "note",
             style: TextStyle(
-              fontSize: 15,
-              color: Colors.grey[700],
+              fontFamily: "Rancho",
+              fontSize: 32,
+              color: CustomColors.textColor.value,
               letterSpacing: 1.2,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 20),
-          TextFormField(
-            controller: title,
-            cursorColor: Colors.greenAccent,
-            cursorHeight: 30,
-            keyboardType: TextInputType.text,
-            style: const TextStyle(
-              fontSize: 20,
-              color: Colors.black,
-              fontWeight: FontWeight.bold
-            ),
-            decoration: const InputDecoration(
-              hintText: "Title",
-              hintStyle: TextStyle(
-                fontFamily: "Rancho",
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                letterSpacing: 2,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: GestureDetector(
+                onTap: (){
+                  noteController.editNote(npd, title.text, message.text);
+                  Navigator.pop(context);
+                },
+                child: const Icon(
+                  TodoController.check,
+                  color: Colors.green,
+                  size: 28,
+                ),
               ),
-              border: InputBorder.none,
             ),
+          ],
+        ),
+        body: ListView(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 10,
           ),
-          const SizedBox(height: 20),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .75,
-            width: MediaQuery.of(context).size.width,
-            child: TextFormField(
-              controller: message,
-              cursorColor: Colors.teal,
-              cursorHeight: 20,
-              scribbleEnabled: !true,
-              scrollPhysics: const ClampingScrollPhysics(),
-              maxLength: 1000,
-              maxLines: 90,
-              keyboardType: TextInputType.multiline,
-              style: const TextStyle(
+          children: [
+            Text(
+              noteController.dateFormat(DateTime.now()),
+              style: TextStyle(
                 fontSize: 15,
-                color: Colors.black87,
+                color: CustomColors.lightTextColor.value.withOpacity(.9),
+                letterSpacing: 1.2,
+                fontFamily: "Rancho"
               ),
-              decoration: const InputDecoration(
-                hintText: "Note something down...",
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              controller: title,
+              cursorColor: Colors.greenAccent,
+              cursorHeight: 30,
+              keyboardType: TextInputType.text,
+              style: TextStyle(
+                fontSize: 20,
+                color: CustomColors.textColor.value,
+                fontWeight: FontWeight.bold
+              ),
+              decoration: InputDecoration(
+                hintText: "Title",
                 hintStyle: TextStyle(
                   fontFamily: "Rancho",
-                  fontSize: 18,
-                  color: Colors.black38,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: CustomColors.lightTextColor.value,
                   letterSpacing: 2,
                 ),
                 border: InputBorder.none,
               ),
             ),
-          ),
-        ],
+            const SizedBox(height: 20),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .75,
+              width: MediaQuery.of(context).size.width,
+              child: TextFormField(
+                controller: message,
+                cursorColor: Colors.teal,
+                cursorHeight: 20,
+                scribbleEnabled: !true,
+                scrollPhysics: const ClampingScrollPhysics(),
+                maxLength: 1000,
+                maxLines: 90,
+                keyboardType: TextInputType.multiline,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: CustomColors.textColor.value,
+                ),
+                decoration: InputDecoration(
+                  hintText: "Note something down...",
+                  hintStyle: TextStyle(
+                    fontFamily: "Rancho",
+                    fontSize: 18,
+                    color: CustomColors.lightTextColor.value.withOpacity(.75),
+                    letterSpacing: 2,
+                  ),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
