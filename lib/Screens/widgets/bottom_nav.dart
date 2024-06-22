@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:try_hive/Screens/constants.dart';
 import 'package:try_hive/Screens/notes.dart';
 import 'package:try_hive/Screens/todo/todos.dart';
 import 'package:try_hive/controllers/bottom_nav_controller.dart';
 import 'package:try_hive/controllers/theme_controller.dart';
 import 'package:try_hive/controllers/todo_controller.dart';
+import 'package:try_hive/services/theme/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: GestureDetector(
                 onTap: (){
-                  
+                  themeController.toggleTheme();
                 },
                 child: Obx(
                   () => Icon(
@@ -86,7 +86,58 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ],
-        ) : myAppBar("Todo List"),
+        ) : AppBar(
+          toolbarHeight: 70,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.brown[900],
+            size: 25,
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: GestureDetector(
+                onTap: (){
+                  Get.toNamed("/search");
+                },
+                child: Obx(
+                  () => Icon(
+                    themeController.lightMode.value ? Icons.dark_mode : Icons.light_mode,
+                    color: Colors.black,
+                    size: 25,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: GestureDetector(
+                onTap: (){
+                  Get.toNamed("/search");
+                },
+                child: const Icon(
+                  Icons.search,
+                  color: Colors.black,
+                  size: 25,
+                ),
+              ),
+            ),
+          ],
+          title: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              "Todo List",
+              style: TextStyle(
+                fontFamily: "Rancho",
+                fontSize: 30,
+                letterSpacing: 1.2,
+                color: CustomColors.textColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
         body: bottomNavController.toDisplay.value == 0 ? NotesDisplayWidget(todoController: todoController) : TodoDisplayWidget(),
         bottomNavigationBar: BottomNavigationBarTheme(
           data: BottomNavigationBarThemeData(
