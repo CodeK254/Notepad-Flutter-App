@@ -81,6 +81,7 @@ class NotesEdit extends StatelessWidget {
             TextFormField(
               controller: title,
               cursorColor: Colors.greenAccent,
+              textCapitalization: TextCapitalization.words,
               cursorHeight: 30,
               keyboardType: TextInputType.text,
               style: TextStyle(
@@ -109,6 +110,7 @@ class NotesEdit extends StatelessWidget {
                 cursorColor: Colors.teal,
                 cursorHeight: 20,
                 scribbleEnabled: !true,
+                textCapitalization: TextCapitalization.sentences,
                 scrollPhysics: const ClampingScrollPhysics(),
                 maxLength: 1000,
                 maxLines: 90,

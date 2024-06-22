@@ -141,6 +141,7 @@ class HomeScreen extends StatelessWidget {
         body: bottomNavController.toDisplay.value == 0 ? NotesDisplayWidget(todoController: todoController) : TodoDisplayWidget(),
         bottomNavigationBar: BottomNavigationBarTheme(
           data: BottomNavigationBarThemeData(
+            backgroundColor: CustomColors.backgroundColor.value,
             selectedItemColor: CustomColors.textColor.value,
             type: BottomNavigationBarType.fixed,
             unselectedItemColor: CustomColors.grey.value,
@@ -225,6 +226,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 controller: todo,
                 keyboardType: TextInputType.text,
+                textCapitalization: TextCapitalization.sentences,
                 keyboardAppearance: Brightness.dark,
                 style: TextStyle(
                   fontSize: 16,

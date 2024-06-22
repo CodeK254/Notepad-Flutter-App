@@ -97,6 +97,7 @@ class _NotesInputState extends State<NotesInput> {
               controller: _title,
               cursorColor: Colors.greenAccent,
               cursorHeight: 30,
+              textCapitalization: TextCapitalization.words,
               keyboardType: TextInputType.text,
               style: TextStyle(
                 fontSize: 20,
@@ -125,6 +126,7 @@ class _NotesInputState extends State<NotesInput> {
                 cursorHeight: 20,
                 scribbleEnabled: !true,
                 scrollPhysics: const ClampingScrollPhysics(),
+                textCapitalization: TextCapitalization.sentences,
                 maxLength: 1000,
                 maxLines: 90,
                 inputFormatters: [

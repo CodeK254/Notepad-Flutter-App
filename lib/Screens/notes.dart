@@ -22,7 +22,7 @@ class NotesDisplayWidget extends StatelessWidget {
         valueListenable: Boxes.getNotePadData().listenable(),
         builder: (context, box, _){
           final notedata = box.values.toList();
-          return ListView(
+          return notedata.isNotEmpty ? ListView(
             children: [
               ...List.generate(notedata.length, (index) => GestureDetector(
                 onTap: (){
@@ -110,6 +110,19 @@ class NotesDisplayWidget extends StatelessWidget {
                 ),
               ))
             ],
+          ) : Center(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Text(
+                "No notes to display, click the button below to make your first note.",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: CustomColors.textColor.value,
+                  fontFamily: "Rancho",
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
           );
         }
       ),
