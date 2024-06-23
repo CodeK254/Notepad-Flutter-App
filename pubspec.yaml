@@ -105,36 +105,57 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Plaster
+    - family: ChivoMono
       fonts:
-        - asset: fonts/Plaster-Regular.ttf
-    - family: MeriendaOne
+        - asset: assets/fonts/ChivoMono-Regular.ttf
+    - family: DancingScript
       fonts:
-        - asset: fonts/MeriendaOne-Regular.ttf
-    - family: LondrinaSketch
+        - asset: assets/fonts/DancingScript-Regular.ttf
+    - family: Dosis
       fonts:
-        - asset: fonts/LondrinaSketch-Regular.ttf
-    - family: Praise
+        - asset: assets/fonts/Dosis-Regular.ttf
+    - family: EBGaramond
       fonts:
-        - asset: fonts/Praise-Regular.ttf
+        - asset: assets/fonts/EBGaramond-Regular.ttf
     - family: Rancho
       fonts:
-        - asset: fonts/Rancho-Regular.ttf
-    - family: RobotoCondensed
+        - asset: assets/fonts/Rancho-Regular.ttf
+    - family: IBMPlexSans
       fonts:
-        - asset: fonts/RobotoCondensed-Regular.ttf
-    - family: PlayfairDisplay
+        - asset: assets/fonts/IBMPlexSans-Regular.ttf
+    - family: Jost
       fonts:
-        - asset: fonts/PlayfairDisplay-VariableFont_wght.ttf
-    - family: MPLUS1Code
+        - asset: assets/fonts/Jost-Regular.ttf
+    - family: MountainsofChristmas
       fonts:
-        - asset: fonts/MPLUS1Code-VariableFont_wght.ttf
-    - family: Oswald
+        - asset: assets/fonts/MountainsofChristmas-Regular.ttf
+    - family: OpenSans
       fonts:
-        - asset: fonts/Oswald-VariableFont_wght.ttf
+        - asset: assets/fonts/OpenSans-Regular.ttf
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/Pacifico-Regular.ttf
+    - family: Quicksand
+      fonts:
+        - asset: assets/fonts/Quicksand-Regular.ttf
+    - family: Rajdhani
+      fonts:
+        - asset: assets/fonts/Rajdhani-Regular.ttf
     - family: Raleway
       fonts:
-        - asset: fonts/Raleway-VariableFont_wght.ttf
+        - asset: assets/fonts/Raleway-Regular.ttf
+    - family: RedditMono
+      fonts:
+        - asset: assets/fonts/RedditMono-Regular.ttf
+    - family: REM
+      fonts:
+        - asset: assets/fonts/REM-Regular.ttf
+    - family: Sevillana
+      fonts:
+        - asset: assets/fonts/Sevillana-Regular.ttf
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

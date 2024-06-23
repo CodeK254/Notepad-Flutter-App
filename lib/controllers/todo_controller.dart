@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:intl/intl.dart";
-import "package:try_hive/Model/boxes.dart";
-import "package:try_hive/Model/notepaddata.dart";
-import "package:try_hive/Model/todolistdata.dart";
+import "package:try_hive/model/boxes.dart";
+import "package:try_hive/model/notepaddata.dart";
+import "package:try_hive/model/todolistdata.dart";
 
 class TodoController extends GetxController with GetTickerProviderStateMixin{
   final mybox = TodoBoxes.getTodoListData();
