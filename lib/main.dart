@@ -12,12 +12,12 @@ import 'package:try_hive/screens/profile.dart';
 import 'package:try_hive/screens/settings/settings.dart';
 import 'package:try_hive/screens/widgets/bottom_nav.dart';
 import 'package:try_hive/controllers/theme_controller.dart';
-import 'package:try_hive/services/fingerprint.dart';
+// import 'package:try_hive/services/fingerprint.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AuthService.requestAuthentication();
+  // await AuthService.requestAuthentication();
   ThemeController themeController = Get.put(ThemeController());
   await Hive.initFlutter();
   Hive.registerAdapter(NotePadDataAdapter());

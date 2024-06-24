@@ -6,6 +6,7 @@ import 'package:try_hive/model/notepaddata.dart';
 import 'package:try_hive/screens/data_manipulation/edit.dart';
 import 'package:try_hive/controllers/theme_controller.dart';
 import 'package:try_hive/controllers/todo_controller.dart';
+import 'package:try_hive/services/share/share_files.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
 class NotesDisplayWidget extends StatelessWidget {
@@ -64,15 +65,41 @@ class NotesDisplayWidget extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                notedata[index].title != "" ? notedata[index].title.toString() : notedata[index].note.toString(),
-                                style: TextStyle(
-                                  fontFamily: CustomFonts.fontFamily.value,
-                                  fontSize: 20,
-                                  letterSpacing: 1.2,
-                                  fontWeight: FontWeight.bold,
-                                  color: CustomColors.textColor.value,
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    notedata[index].title != "" ? notedata[index].title.toString() : notedata[index].note.toString(),
+                                    style: TextStyle(
+                                      fontFamily: CustomFonts.fontFamily.value,
+                                      fontSize: 20,
+                                      letterSpacing: 1.2,
+                                      fontWeight: FontWeight.bold,
+                                      color: CustomColors.textColor.value,
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: (){
+                                      ShareFiles.shareText(notedata[index].title != "" ? "${notedata[index].title.toString()}.\n${notedata[index].note.toString()}" : notedata[index].note.toString());
+                                    },
+                                    child: CircleAvatar(
+                                      backgroundColor: CustomColors.backgroundColor.value,
+                                      radius: 16,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(1.0),
+                                        child: CircleAvatar(
+                                          backgroundColor: CustomColors.lightGrey.value,
+                                          radius: 15,
+                                          child: Icon(
+                                            Icons.share,
+                                            color: CustomColors.lightTextColor.value.withOpacity(.65),
+                                            size: 22,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 10),
                               Visibility(
