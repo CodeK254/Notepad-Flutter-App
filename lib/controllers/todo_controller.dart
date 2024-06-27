@@ -52,7 +52,7 @@ class TodoController extends GetxController with GetTickerProviderStateMixin{
   }
 
   void removeItem(List<TodoListData> data, int index) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     data[index].delete();
   }
 
