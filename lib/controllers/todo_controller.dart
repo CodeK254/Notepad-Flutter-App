@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:intl/intl.dart";
+import "package:screenshot/screenshot.dart";
 import "package:try_hive/model/boxes.dart";
 import "package:try_hive/model/notepaddata.dart";
 import "package:try_hive/model/todolistdata.dart";
@@ -13,6 +14,8 @@ class TodoController extends GetxController with GetTickerProviderStateMixin{
   final changed = false.obs;
   final todisplay = 0.obs;
   final selected = <NotePadData>[].obs;
+  final ScreenshotController screenshotController = ScreenshotController();
+  RxBool loading = false.obs;
 
   void addToSelected(NotePadData data){
     List<NotePadData> found = selected.where((p0) => p0.key == data.key).toList();
