@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -112,8 +111,9 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * .125),
-                CarouselSlider(
-                  items: [
+                CarouselView(
+                  itemExtent: 3,
+                  children: [
                     Image(
                       image: const AssetImage("assets/New Product.png"),
                       height: MediaQuery.of(context).size.height * .395,
@@ -126,15 +126,7 @@ class SettingsScreen extends StatelessWidget {
                       image: const AssetImage("assets/New Product.png"),
                       height: MediaQuery.of(context).size.height * .395,
                     ),
-                  ],
-                  options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height * .4,
-                    aspectRatio: 1,
-                    autoPlay: true,
-                    enlargeCenterPage: true,
-                    autoPlayAnimationDuration: const Duration(seconds: 3),
-                    autoPlayInterval: const Duration(seconds: 10),
-                  )
+                  ]
                 )
               ],
             ),
