@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:try_hive/model/notepaddata.dart';
 import 'package:try_hive/controllers/todo_controller.dart';
-import 'package:try_hive/services/share/share_files.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
 class NotesEdit extends StatelessWidget {
@@ -141,32 +140,16 @@ class NotesEdit extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        floatingActionButton: GestureDetector(
-          onTap: () async {
-            noteController.loading.value = true;
-            Uint8List? image = await noteController.screenshotController.capture();
-            await ShareFiles.shareImage(image!);
-            print("Outside");
-            Get.back();
-          },
-          child: CircleAvatar(
-            backgroundColor: CustomColors.backgroundColor.value == Colors.black ? Colors.white.withOpacity(.6) : Colors.black.withOpacity(.6),
-            radius: 28,
-            child: Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: CircleAvatar(
-                backgroundColor: CustomColors.lightGrey.value,
-                radius: 25,
-                child: Icon(
-                  Icons.share,
-                  color: CustomColors.lightTextColor.value.withOpacity(.65),
-                  size: 22,
-                ),
-              ),
-            ),
-          ),
-        ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        // floatingActionButton: GestureDetector(
+        //   onTap: () async {
+        //     noteController.loading.value = true;
+        //     Uint8List? image = await noteController.screenshotController.capture();
+        //     await ShareFiles.shareImage(image!);
+        //     Get.back();
+        //   },
+        //   child: 
+        // ),
       ),
     );
   }

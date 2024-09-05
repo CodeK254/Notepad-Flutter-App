@@ -84,6 +84,18 @@ class NotesDisplayWidget extends StatelessWidget {
                                             color: CustomColors.textColor.value,
                                           ),
                                         ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(1.0),
+                                          child: CircleAvatar(
+                                            backgroundColor: CustomColors.lightGrey.value,
+                                            radius: 15,
+                                            child: Icon(
+                                              Icons.share,
+                                              color: CustomColors.lightTextColor.value.withOpacity(.65),
+                                              size: 18,
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     const SizedBox(height: 10),
