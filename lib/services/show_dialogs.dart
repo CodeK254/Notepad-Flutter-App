@@ -1,17 +1,18 @@
-import 'package:try_hive/screens/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:try_hive/screens/widgets/space.dart';
+import 'package:try_hive/screens/widgets/text.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
-void showAlertDialog(Widget content, {bool? hasCancel, String label = "Alert!!!", String buttonName = "Okay", String cancel = "Cancel", void Function()? onPressed, void Function()? onCancel, bool? isDismissible}){
+void showAlertDialog(BuildContext context, Widget content, {bool? hasCancel, String label = "Okay", String cancel = "Cancel", void Function()? onPressed, void Function()? onCancel, bool? isDismissible}) async {
   Get.dialog(
     AlertDialog(
       title: CustomText(
-        text: label, 
+        text: "Alert!!!", 
         fontSize: 18, 
-        textColor: CustomColors.textColor.value,
+        textColor: Colors.black,
         fontWeight: FontWeight.bold,
-        fontFamily: "Ubuntu",
+        fontFamily: CustomFonts.fontFamily.value,
       ),
       content: content,
       actions: [
@@ -30,15 +31,12 @@ void showAlertDialog(Widget content, {bool? hasCancel, String label = "Alert!!!"
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomText(
-                      text: cancel, 
-                      fontSize: 16,
-                      textColor: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "Ubuntu",
-                    ),
+                  child: CustomText(
+                    text: cancel, 
+                    fontSize: 16,
+                    textColor: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: CustomFonts.fontFamily.value,
                   ),
                 ),
               ),
@@ -50,16 +48,22 @@ void showAlertDialog(Widget content, {bool? hasCancel, String label = "Alert!!!"
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CustomText(
-                    text: buttonName, 
-                    fontSize: 16,
-                    textColor: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Ubuntu",
+                  padding: const EdgeInsets.all(0),
+                  maximumSize: Size(
+                    horizontalSpace(context, 1),
+                    20,
                   ),
+                  minimumSize: Size(
+                    horizontalSpace(context, 1),
+                    20,
+                  ),
+                ),
+                child: CustomText(
+                  text: label, 
+                  fontSize: 16,
+                  textColor: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: CustomFonts.fontFamily.value,
                 ),
               ),
             ],
@@ -70,6 +74,6 @@ void showAlertDialog(Widget content, {bool? hasCancel, String label = "Alert!!!"
         borderRadius: BorderRadius.circular(8),
       ),
     ),
-    barrierDismissible: false,
+    barrierDismissible: isDismissible ?? false,
   );
 }

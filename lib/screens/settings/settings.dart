@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:try_hive/controllers/settings_controller.dart';
 import 'package:try_hive/controllers/theme_controller.dart';
+import 'package:try_hive/screens/widgets/custom_spacing.dart';
+import 'package:try_hive/screens/widgets/space.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -110,23 +113,45 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * .125),
-                CarouselView(
-                  itemExtent: 3,
+                const CustomSpacing(height: .065),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image(
-                      image: const AssetImage("assets/New Product.png"),
-                      height: MediaQuery.of(context).size.height * .395,
+                    SizedBox(
+                      width: horizontalSpace(context, .45),
+                      height: verticalSpace(context, .33),
+                      child: const Image(
+                        image: AssetImage("assets/New Product.png"),
+                      ),
+                    ).animate(
+                      effects: [
+                        const FadeEffect(
+                          begin: 0,
+                          end: 1,
+                          duration: Duration(milliseconds: 1500),
+                          delay: Duration(milliseconds: 500),
+                          curve: Curves.easeIn,
+                        ),
+                      ],
                     ),
-                    Image(
-                      image: const AssetImage("assets/New Product.png"),
-                      height: MediaQuery.of(context).size.height * .395,
+                    SizedBox(
+                      width: horizontalSpace(context, .45),
+                      height: verticalSpace(context, .3),
+                      child: const Image(
+                        image: AssetImage("assets/New Product.png"),
+                      ),
+                    ).animate(
+                      effects: [
+                        const FadeEffect(
+                          begin: 0,
+                          end: 1,
+                          duration: Duration(milliseconds: 1000),
+                          delay: Duration(milliseconds: 1000),
+                          curve: Curves.easeIn,
+                        ),
+                      ]
                     ),
-                    Image(
-                      image: const AssetImage("assets/New Product.png"),
-                      height: MediaQuery.of(context).size.height * .395,
-                    ),
-                  ]
+                  ],
                 )
               ],
             ),

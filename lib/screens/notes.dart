@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:try_hive/controllers/share_controller.dart';
 import 'package:try_hive/model/boxes.dart';
 import 'package:try_hive/model/notepaddata.dart';
 import 'package:try_hive/screens/data_manipulation/edit.dart';
 import 'package:try_hive/controllers/theme_controller.dart';
 import 'package:try_hive/controllers/todo_controller.dart';
+import 'package:try_hive/screens/widgets/alerts.dart';
+import 'package:try_hive/screens/widgets/custom_spacing.dart';
+import 'package:try_hive/screens/widgets/text.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
 class NotesDisplayWidget extends StatelessWidget {
@@ -13,6 +18,7 @@ class NotesDisplayWidget extends StatelessWidget {
   final controller = Get.put(TodoController());
   final ThemeController themeController = Get.put(ThemeController());
   final TodoController notesController = Get.put(TodoController());
+  final ShareController shareController = Get.put(ShareController());
 
   final TodoController todoController;
 
@@ -84,15 +90,82 @@ class NotesDisplayWidget extends StatelessWidget {
                                             color: CustomColors.textColor.value,
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(1.0),
+                                        GestureDetector(
+                                          onTap: (){
+                                            showAlertDialog(
+                                              label: "Preview",
+                                              Screenshot(
+                                                controller: notesController.screenshotController,
+                                                child: Container(
+                                                  color: CustomColors.backgroundColor.value,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.symmetric(
+                                                      horizontal: 12,
+                                                      vertical: 16,
+                                                    ),
+                                                    child: Column(
+                                                      mainAxisSize: MainAxisSize.min,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        CustomText(
+                                                          text: notedata[index].title != "" ? notedata[index].title.toString() : notedata[index].note.toString(),
+                                                          fontSize: 20, 
+                                                          textColor: CustomColors.lightTextColor.value,
+                                                          fontWeight: FontWeight.bold,
+                                                          fontFamily: CustomFonts.fontFamily.value,
+                                                        ),
+                                                        const CustomSpacing(height: .02),
+                                                        Visibility(
+                                                          visible: notedata[index].title != "",
+                                                          child: Text(
+                                                            notedata[index].note.toString(),
+                                                            style: TextStyle(
+                                                              fontFamily: CustomFonts.fontFamily.value,
+                                                              fontSize: 16,
+                                                              letterSpacing: 1.2,
+                                                              color: CustomColors.textColor.value,
+                                                              fontWeight: FontWeight.normal
+                                                            ),
+                                                            overflow: TextOverflow.fade,
+                                                          ),
+                                                        ),
+                                                        const CustomSpacing(height: .045),
+                                                        Align(
+                                                          alignment: Alignment.bottomRight,
+                                                          child: Text(
+                                                            todoController.dateFormat(notedata[index].createdAt),
+                                                            style: TextStyle(
+                                                              fontFamily: CustomFonts.fontFamily.value,
+                                                              fontSize: 12,
+                                                              letterSpacing: 1.2,
+                                                              color: CustomColors.grey.value.withOpacity(.75),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              buttonName: "Share",
+                                              onPressed: () async {
+                                                shareController.shareImage(notesController);
+                                                Get.back();
+                                              },
+                                              onCancel: (){
+                                                Get.back();
+                                              },
+                                              isDismissible: true,
+                                              hasCancel: true,
+                                            );
+                                          },
                                           child: CircleAvatar(
                                             backgroundColor: CustomColors.lightGrey.value,
-                                            radius: 15,
+                                            radius: 20,
                                             child: Icon(
                                               Icons.share,
                                               color: CustomColors.lightTextColor.value.withOpacity(.65),
-                                              size: 18,
+                                              size: 22,
                                             ),
                                           ),
                                         ),
@@ -109,7 +182,8 @@ class NotesDisplayWidget extends StatelessWidget {
                                           letterSpacing: 1.2,
                                           color: CustomColors.lightTextColor.value,
                                         ),
-                                        overflow: TextOverflow.fade,
+                                        maxLines: 4,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
                                     const SizedBox(height: 7),
