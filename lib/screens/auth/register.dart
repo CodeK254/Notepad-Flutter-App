@@ -142,9 +142,9 @@ class _RegisterState extends State<Register> {
                       letterSpacing: 1.2,
                     ),
                   )
-                : Row(
+                : const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
                         "processing...",
                         style: TextStyle(

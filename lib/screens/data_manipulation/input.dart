@@ -26,9 +26,9 @@ class _NotesInputState extends State<NotesInput> {
       ..note = note
       ..createdAt = DateTime.now();
 
-    final _mybox = Boxes.getNotePadData();
+    final mybox = Boxes.getNotePadData();
 
-    _mybox.add(addnote);
+    mybox.add(addnote);
   }
 
   @override

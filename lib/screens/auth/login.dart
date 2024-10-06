@@ -102,9 +102,9 @@ class _LoginState extends State<Login> {
                               letterSpacing: 1.2,
                             ),
                           )
-                        : Row(
+                        : const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
                                 "processing...",
                                 style: TextStyle(
