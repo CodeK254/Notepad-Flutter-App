@@ -4,22 +4,36 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:try_hive/controllers/edit_note_controller.dart';
 import 'package:try_hive/model/notepaddata.dart';
 import 'package:try_hive/controllers/todo_controller.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
-class NotesEdit extends StatelessWidget {
+class NotesEdit extends StatefulWidget {
   NotePadData npd;
 
-  final noteController = Get.put(TodoController());
-  final TextEditingController title = TextEditingController();
-  final TextEditingController message = TextEditingController();
 
   NotesEdit({super.key, required this.npd});
 
   @override
+  State<NotesEdit> createState() => _NotesEditState();
+}
+
+class _NotesEditState extends State<NotesEdit> {
+  // final noteController = Get.put(TodoController());
+  final noteController = Get.put(EditNoteController());
+
+  final TextEditingController title = TextEditingController();
+
+  final TextEditingController message = TextEditingController();
+  @override
+  void initState() {
+    noteController.takeData(widget.npd, title, message);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    noteController.takeData(npd, title, message);
     return Obx(
       () => Scaffold(
         backgroundColor: CustomColors.lightGrey.value,
@@ -58,7 +72,7 @@ class NotesEdit extends StatelessWidget {
                   if(noteController.speaking.value){
                     noteController.pauseReading();
                   }
-                  noteController.editNote(npd, title.text, message.text);
+                  noteController.editNote(widget.npd, title.text, message.text);
                   Navigator.pop(context);
                 },
                 child: const Icon(

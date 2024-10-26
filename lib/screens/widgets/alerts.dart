@@ -13,11 +13,11 @@ void showAlertDialog(Widget content, {bool? hasCancel, String label = "Alert!!!"
         fontWeight: FontWeight.bold,
         fontFamily: "Ubuntu",
       ),
-      content: content,
-      actions: [
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          content,
+          Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Visibility(
@@ -31,13 +31,13 @@ void showAlertDialog(Widget content, {bool? hasCancel, String label = "Alert!!!"
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: CustomText(
                       text: cancel, 
                       fontSize: 16,
                       textColor: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontFamily: "Ubuntu",
+                      fontFamily: CustomFonts.fontFamily.value,
                     ),
                   ),
                 ),
@@ -52,20 +52,20 @@ void showAlertDialog(Widget content, {bool? hasCancel, String label = "Alert!!!"
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: CustomText(
                     text: buttonName, 
                     fontSize: 16,
                     textColor: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontFamily: "Ubuntu",
+                      fontFamily: CustomFonts.fontFamily.value,
                   ),
                 ),
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),

@@ -10,6 +10,7 @@ import 'package:try_hive/controllers/theme_controller.dart';
 import 'package:try_hive/controllers/todo_controller.dart';
 import 'package:try_hive/screens/widgets/alerts.dart';
 import 'package:try_hive/screens/widgets/custom_spacing.dart';
+import 'package:try_hive/screens/widgets/space.dart';
 import 'package:try_hive/screens/widgets/text.dart';
 import 'package:try_hive/services/theme/colors.dart';
 
@@ -39,9 +40,8 @@ class NotesDisplayWidget extends StatelessWidget {
                   children: [
                     ...List.generate(notedata.length, (index) => GestureDetector(
                       onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NotesEdit(npd: notedata[index]))
+                        Get.to(
+                          NotesEdit(npd: notedata[index]),
                         );
                       },
                       onLongPress: (){
@@ -80,14 +80,17 @@ class NotesDisplayWidget extends StatelessWidget {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          notedata[index].title != "" ? notedata[index].title.toString() : notedata[index].note.toString(),
-                                          style: TextStyle(
-                                            fontFamily: CustomFonts.fontFamily.value,
-                                            fontSize: 20,
-                                            letterSpacing: 1.2,
-                                            fontWeight: FontWeight.bold,
-                                            color: CustomColors.textColor.value,
+                                        SizedBox(
+                                          width: horizontalSpace(context, .7),
+                                          child: Text(
+                                            notedata[index].title != "" ? notedata[index].title.toString().split("\n").first : notedata[index].note.toString().split("\n").first,
+                                            style: TextStyle(
+                                              fontFamily: CustomFonts.fontFamily.value,
+                                              fontSize: 20,
+                                              letterSpacing: 1.2,
+                                              fontWeight: FontWeight.bold,
+                                              color: CustomColors.textColor.value,
+                                            ),
                                           ),
                                         ),
                                         GestureDetector(
@@ -103,46 +106,56 @@ class NotesDisplayWidget extends StatelessWidget {
                                                       horizontal: 12,
                                                       vertical: 16,
                                                     ),
-                                                    child: Column(
-                                                      mainAxisSize: MainAxisSize.min,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        CustomText(
-                                                          text: notedata[index].title != "" ? notedata[index].title.toString() : notedata[index].note.toString(),
-                                                          fontSize: 20, 
-                                                          textColor: CustomColors.lightTextColor.value,
-                                                          fontWeight: FontWeight.bold,
-                                                          fontFamily: CustomFonts.fontFamily.value,
-                                                        ),
-                                                        const CustomSpacing(height: .02),
-                                                        Visibility(
-                                                          visible: notedata[index].title != "",
-                                                          child: Text(
-                                                            notedata[index].note.toString(),
-                                                            style: TextStyle(
-                                                              fontFamily: CustomFonts.fontFamily.value,
-                                                              fontSize: 16,
-                                                              letterSpacing: 1.2,
-                                                              color: CustomColors.textColor.value,
-                                                              fontWeight: FontWeight.normal
-                                                            ),
-                                                            overflow: TextOverflow.fade,
+                                                    child: Container(
+                                                      constraints: BoxConstraints(
+                                                        maxHeight: verticalSpace(context, .6),
+                                                        maxWidth: horizontalSpace(context, 1),
+                                                      ),
+                                                      child: Column(
+                                                        mainAxisSize: MainAxisSize.min,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          CustomText(
+                                                            text: notedata[index].title != "" ?
+                                                              notedata[index].title.toString().trimLeft().trimRight():
+                                                              notedata[index].note.toString().trimLeft().trimRight(),
+                                                            fontSize: 16,
+                                                            textColor: CustomColors.lightTextColor.value,
+                                                            fontWeight: FontWeight.bold,
+                                                            fontFamily: CustomFonts.fontFamily.value,
+                                                            // textOverflow: TextOverflow.ellipsis,
                                                           ),
-                                                        ),
-                                                        const CustomSpacing(height: .045),
-                                                        Align(
-                                                          alignment: Alignment.bottomRight,
-                                                          child: Text(
-                                                            todoController.dateFormat(notedata[index].createdAt),
-                                                            style: TextStyle(
-                                                              fontFamily: CustomFonts.fontFamily.value,
-                                                              fontSize: 12,
-                                                              letterSpacing: 1.2,
-                                                              color: CustomColors.grey.value.withOpacity(.75),
+                                                          const CustomSpacing(height: .02),
+                                                          Visibility(
+                                                            visible: notedata[index].title != "",
+                                                            child: Text(
+                                                              notedata[index].note.toString().trimLeft().trimRight(),
+                                                              style: TextStyle(
+                                                                fontFamily: CustomFonts.fontFamily.value,
+                                                                fontSize: 16,
+                                                                letterSpacing: 1.2,
+                                                                color: CustomColors.textColor.value,
+                                                                fontWeight: FontWeight.normal,
+                                                              ),
+                                                              overflow: TextOverflow.ellipsis,
+                                                              maxLines: 20,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                          const CustomSpacing(height: .045),
+                                                          Align(
+                                                            alignment: Alignment.bottomRight,
+                                                            child: Text(
+                                                              todoController.dateFormat(notedata[index].createdAt),
+                                                              style: TextStyle(
+                                                                fontFamily: CustomFonts.fontFamily.value,
+                                                                fontSize: 12,
+                                                                letterSpacing: 1.2,
+                                                                color: CustomColors.grey.value.withOpacity(.75),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),

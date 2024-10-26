@@ -9,8 +9,9 @@ class CustomText extends StatelessWidget {
   final bool? centerText;
   final TextDecoration? textDecoration;
   final String? fontFamily;
+  final TextOverflow? textOverflow;
   const CustomText({
-    super.key, required this.text, required this.fontSize, this.fontWeight, required this.textColor, this.backgroundColor, this.centerText, this.textDecoration, this.fontFamily,
+    super.key, required this.text, required this.fontSize, this.fontWeight, required this.textColor, this.backgroundColor, this.centerText, this.textDecoration, this.fontFamily, this.textOverflow,
   });
 
   @override
@@ -26,6 +27,7 @@ class CustomText extends StatelessWidget {
         fontFamily: fontFamily,
       ),
       textAlign: centerText == true ? TextAlign.center : TextAlign.left,
+      overflow: textOverflow ?? TextOverflow.visible,
     );
   }
 }

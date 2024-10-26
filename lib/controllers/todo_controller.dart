@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:flutter_tts/flutter_tts.dart";
 import "package:get/get.dart";
 import "package:intl/intl.dart";
 import "package:screenshot/screenshot.dart";
@@ -17,8 +16,6 @@ class TodoController extends GetxController with GetTickerProviderStateMixin{
   final selected = <NotePadData>[].obs;
   final ScreenshotController screenshotController = ScreenshotController();
   RxBool loading = false.obs;
-  FlutterTts flutterTts = FlutterTts();
-  RxBool speaking = false.obs;
 
   void addToSelected(NotePadData data){
     List<NotePadData> found = selected.where((p0) => p0.key == data.key).toList();
@@ -28,28 +25,6 @@ class TodoController extends GetxController with GetTickerProviderStateMixin{
       selected.removeWhere((element) => element.key == data.key);
     }
   }
-
-  void readText(String text) async {
-    try{
-      await flutterTts.speak(text);
-      speaking.value = true;
-    } catch(e){
-      Get.snackbar(
-        "Error!!!",
-        e.toString(),
-      );
-    }
-  }
-
-  void pauseReading() async {
-    await flutterTts.pause();
-    speaking.value = false;
-  }
-
-  // void resumeReading() async {
-  //   await flutterTts.c;
-  //   speaking.value = false;
-  // }
 
   bool isPresent(int key){
     List<NotePadData> data = selected.where((p0) => p0.key == key).toList();
@@ -84,21 +59,7 @@ class TodoController extends GetxController with GetTickerProviderStateMixin{
     data[index].delete();
   }
 
-  void takeData(NotePadData npd, TextEditingController title, TextEditingController message){
-    title.text = npd.title.toString();
-    message.text = npd.note.toString();
-  }
-
   static const IconData check = IconData(0xe156, fontFamily: 'MaterialIcons');
-
-  void editNote(NotePadData npd, String title, String note){
-    final editnote = NotePadData()
-      ..title = title
-      ..note = note
-      ..createdAt = DateTime.now();
-
-    notesBox.put(npd.key, editnote);
-  }
 
   final notedata = <NotePadData>[].obs;
   final todos = <TodoListData>[].obs;
